@@ -19,3 +19,9 @@ I plan to use the following technologies / libraries
 * It is not intend to be a web-based upload orgy. 
 * It is not intend to be a image file handler. 
 * It is not intend to be a directoy image file listing. 
+
+# Developers Information
+
+While developing this application, I use a virtualenv and installed (using pip)
+* exifread https://pypi.python.org/pypi/ExifRead
+* Flask http://flask.pocoo.org/
