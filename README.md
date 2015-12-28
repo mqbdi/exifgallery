@@ -10,6 +10,7 @@ The vision on ExifGallery is an image viewer based on the EXIF meta data in the 
 
 I plan to use the following technologies / libraries
 * Python Flask http://flask.pocoo.org to embed this application into a Lighttp
+* Using WSGI standard to build applications. 
 * Bootstrap CSS and Javascript for web-based views, responsive and compatible for many browsers (unlike Internet Explorer until now)
 * JQuery for a living web-application. 
 
