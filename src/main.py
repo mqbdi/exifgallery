@@ -110,7 +110,7 @@ def build():
 #                 print(filename + " EXIF DateTimeOriginal " + exiftags.get('EXIF DateTimeOriginal').values )
 #             if exiftags.has_key('Image DateTime'):
 #                 print(filename + " Image DateTime " + exiftags.get('Image DateTime').values )
-            if exiftags.has_key('EXIF DateTimeDigitized'): 
+            if 'EXIF DateTimeDigitized' in exiftags: 
                 print(filename + " EXIF DateTimeDigitized " + exiftags.get('EXIF DateTimeDigitized').values )
                 meta.exifdate = exiftags.get('EXIF DateTimeDigitized').values
 #            'GPS GPSLatitudeRef', 'GPS GPSLatitude'
@@ -119,7 +119,7 @@ def build():
             lat = None
             lon = None
             
-            if exiftags.has_key('GPS GPSLatitude'): 
+            if 'GPS GPSLatitude' in exiftags: 
                 lat = _convert_to_degress(exiftags.get('GPS GPSLatitude'))
                 latref = exiftags.get('GPS GPSLatitudeRef').values
                 if latref != "N":
@@ -127,7 +127,7 @@ def build():
 
                 print(filename + ' GPS GPSLatitude ' + str(exiftags.get('GPS GPSLatitude').values) + str(exiftags.get('GPS GPSLatitudeRef').values) )
 
-            if exiftags.has_key('GPS GPSLongitude'): 
+            if 'GPS GPSLongitude' in exiftags: 
                 lon = _convert_to_degress(exiftags.get('GPS GPSLongitude'))
                 lonref = exiftags.get('GPS GPSLongitudeRef').values
                 if lonref != 'E':
