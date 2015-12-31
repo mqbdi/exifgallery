@@ -74,7 +74,7 @@ def print_exif(filename):
     tags = exifread.process_file(f, details=False)
     for tag in tags.keys():
         if tag in ('EXIF DateTimeOriginal', 'JPEGThumbnail', 'Image Model'):  # , 'JPEGThumbnail', 'TIFFThumbnail', 'Filename', 'EXIF MakerNote'):
-            print "file: %s, key: %s, value %s" % (filename, tag, tags[tag])
+            print("file: %s, key: %s, value %s" % (filename, tag, tags[tag]))
     # print(" file " + filename + "  tags: " + str(tags))
 
 @app.route("/")
@@ -91,6 +91,9 @@ def hello():
 
 @app.route("/build")
 def build():
+    """
+    This method created the index to scroll in different views through the images. 
+    """
     imagefiles = []
     paths = get_configuredpaths()
     for path in paths:
@@ -99,6 +102,7 @@ def build():
             fp = io.open(filename, 'rb')
             exiftags = exifread.process_file(fp, details=False)
             # print (filename + "\t" + str(exiftags.keys() ))
+            fp.close()
             meta = FileImage()
             meta.fqpath = filename
 
@@ -142,12 +146,12 @@ def build():
             imagefiles.append(meta)
     jsonfile = io.open(indexfile, 'w', encoding='utf-8')
     # print json.dumps([ i.__dict__  imagefiles ])
-    jsonfile.write(unicode(json.dumps( [i.__dict__ for i in imagefiles], ensure_ascii=False, indent=2)))
+    jsonfile.write(str(json.dumps( [i.__dict__ for i in imagefiles], ensure_ascii=False, indent=2)))
     # json.dump(unicode( imagefiles ), jsonfile)
-    jsonfile.flush()
+    jsonfile.flush() 
     jsonfile.close()
     
-    print len(imagefiles)
+    print(len(imagefiles))
     return flask.templating.render_template('default-template.html')
 
 @app.route("/login")
